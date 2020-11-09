@@ -1,4 +1,4 @@
-# WebDevAssignments
+# Web Dev Assignments
 An assortment of web pages with simple functions.
 
 ### [Assignment 1 - Income Tax Calculator](https://jarodgu.github.io/WebDev/Assignment%201/Assignment1.html)
