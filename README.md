@@ -24,4 +24,3 @@ Introduction to checkboxes and converts USD to various currencies via API
 
 ### [Homework 7 - Lists](https://jarodgu.github.io/WebDev/Homework7.html)
 Introduction to lists in Bootstrap. Generates lists of numbers using parameters
-
