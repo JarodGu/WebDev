@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>jQuery Template</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!-- Bacon Ipsum: Generates Lorem Ipsum-like text -->
+    <script src="http://cdn.baconipsum.com/api/jquery-BaconIpsum.js"></script>
+
+    <!-- Use included jquery.min.js if CDN not available -->
+    <script type="text/javascript">
+        if (typeof jQuery == 'undefined') {
+            document.write(unescape("<script src='jquery.min.js' type='text/javascript'><\/script>"));
+        }
+
+    </script>
+    <script type="text/javascript">
+        var sum = 0;
+        $(document).ready(function() {
+            alert('Gadzooks! It worked!');
+            $("#btnSumNumbers").click(function() {
+                //alert("Made it to the click handler");
+                var num1AsString = $("#firstNum").val();
+                var num1AsNumber = parseFloat(num1AsString);
+
+                console.log("firstNum (as string): >>" + num1AsString + "<<");
+                console.log("firstNum (as number): >>" + num1AsNumber + "<<");
+
+                var num2AsString = $("#secondNum").val();
+                var num2AsNumber = parseFloat(num2AsString);
+
+                console.log("secondNum (as string): >>" + num2AsString + "<<");
+                console.log("secondNum (as number): >>" + num2AsNumber + "<<");
+
+                if (isNaN(num1AsNumber)) {
+                    alert("Error: num1 not a number");
+                    console.log("Error: num1 not a number");
+                } else if (isNaN(num2AsNumber)) {
+                    alert("Error: num2 not a number");
+                    console.log("Error: num2 not a number");
+                } else {
+                    sum = num1AsNumber + num2AsNumber;
+                    console.log("Sum is: " + sum);
+                    $("#msgHere").html("WASSSSSUUUUUUUP, " + num1AsString + " + " + num2AsString + " is: " + sum + "<br/>");
+
+                    sum = (num1AsNumber + num2AsNumber);
+                    console.log("sum (as number): >>" + sum + "<<");
+                    console.log("sum (as number, right here): >>" + (num1AsNumber + num2AsNumber) + "<<");
+                    console.log("sum (as number, right here, no parens): >>" + num1AsNumber + num2AsNumber + "<<");
+                    console.log(); // blank line, for readability
+                    console.log("Nifty trick: num1AsNumber is a " + (typeof num1AsNumber) + "; num1AsString is a " + typeof num1AsString);
+                }
+            });
+
+            // Create bacon paragraphs based on sum variable
+            $("#baconify").click(function() {
+                if (sum > 0) { // Added two numbers
+                    console.log("Creating " + sum + " bacon ipsum paragraphs.");
+                    //$("#baconify").hide();
+
+                    // Clear HTML first
+                    $("#paragraphsToAdd").html("");
+                    $("#paragraphsToAdd").BaconIpsum({
+                        type: 'all-meat',
+                        paras: sum
+                    });
+                } else { //
+                    console.log("Error: Add two numbers first");
+                    alert("Add two numbers first.\nHint: They denote how many paragraphs to generate");
+                }
+            });
+        });
+
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Homework 3</h1>
+            <h3>By Jarod Guerrero - CSS 481 - 2/4/2020 </h3>
+        </div>
+        <div class="form">
+            <h2>Specifications</h2>
+            <ul>
+                <li>Part 1: Adding jQuery - In HTML head element</li>
+                <li>Part 2: ID Selectors - Used throughout code</li>
+                <li>Part 3: Button Response - Add and Baconify buttons</li>
+                <li>Part 4: Textbox to Paragraph - Displaying inputted numbers to add</li>
+            </ul>
+        </div>
+
+        <h2>AddTwoNumbers.exe</h2>
+        <form>
+            <p>Please type a number here: <input type="text" id="firstNum"> <br />
+                Please type ANOTHER number here: <input type="text" id="secondNum"> <br /><input type="button" id="btnSumNumbers" value="Click here for their sum!">
+            </p>
+        </form>
+        <p id="msgHere">Some Fascinating Text! That I will change! With jQuery!</p>
+    </div>
+
+
+    <div class="container">
+        <h2>Bacon?</h2>
+        <div id="paragraphsToAdd" class="container-fluid">
+            There's a distinct lack of bacon here. Try adding two numbers above then click the "baconify" button.
+            <input type="button" id="baconify" value="Baconify">
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Homework 4</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!-- Bacon Ipsum: Generates Lorem Ipsum-like text -->
+    <script src="http://cdn.baconipsum.com/api/jquery-BaconIpsum.js"></script>
+
+    <!-- Use included jquery.min.js if CDN not available -->
+    <script type="text/javascript">
+        if (typeof jQuery == 'undefined') {
+            document.write(unescape("<script src='jquery.min.js' type='text/javascript'><\/script>"));
+        }
+    </script>
+    
+    <style>
+        body {
+            background-image: url('https://media2.giphy.com/media/3osxYjBklebbRBz10A/giphy.gif');
+        }
+        h2 {
+            background-color: #EFEFEF;
+            border-radius: 15px;
+            padding: 10px;
+        }
+    </style>
+    
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#convert").click(function() {
+                var chirps = $("#cricketChirps").val();
+                var chirpsAsString = parseFloat(chirps);
+                
+                var FarenheitOrCelsius = $('input:radio[name=temp]:checked').val();
+                
+                console.log("Inputted chirps: " + chirpsAsString);
+                
+                if(isNaN(chirps)) 
+                {
+                    alert("Please type in the number of cricket chirps in 15 seconds")
+                    console.log("Error: Invalid cricket chirp input");
+                }
+                else // do temperature conversion for farenheit
+                {
+                    chirps = (+chirps + 40) / 4;
+                    console.log("temp f: " + chirps);
+                    // choose one to output
+                    // Round to nearest .5 degree by
+                    // multiplying by two and rounding, then dividing by 2
+                    // Reference: https://alvinalexander.com/source-code/java-method-round-float-nearest-half-value
+                    if (FarenheitOrCelsius == "F") {
+                        chirps = Math.round(+chirps * 2) / 2.0;
+                        $("#output").html("The temperature is " + chirps + "°F");
+                    } else {
+                        chirps = (Math.round(2 * (+chirps - 32) * (5/9)) / 2.0).toFixed(1);
+                        $("#output").html("The temperature is " + chirps + "°C");
+                    }    
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        
+        <div class="jumbotron">
+            <h1>Homework 4</h1>
+            <h3>By Jarod Guerrero - CSS 481 - 2/7/2020 </h3>
+        </div>
+
+        <h2>CricketsPer15SecToFarenheitOrCelsius.exe</h2>
+        <form>
+            <p>Cricket chirps in 15 seconds <input type="text" id="cricketChirps">
+                <br>
+                <input type="button" id="convert" value="Do the thing">
+            </p>
+            
+            <p>
+            <input type="radio" name="temp" value="F" checked> Farenheit <br>
+                <input type="radio" name="temp" value="C"> Celsius
+            </p>
+        </form>
+        <p id="output"></p>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+
+<meta charset="utf-8">
+
+<html>
+
+<head>
+    <title>Assignment 1</title>
+
+    <!-- Latest compiled and minified Boostrap CSS -->
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Responsive meta tag for proper mobile device rendering -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Webpage CSS -->
+    <link rel="stylesheet" type="text/css" href="asg1.css">
+
+    <!-- Webpage javascript -->
+</head>
+
+<body>
+    <!-- Nav bar -->
+
+    <!-- Tax info section -->
+
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="row">
+                <h1 class="display-1">Welcome to ZoomerTax</h1>
+            </div>
+            <div class="col-6">
+                <h4 class="mb-3">Find out your weekly netpay and tax amounts</h4>
+
+                <div class="input-group input-group-lg mb-2">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">$</span>
+                    </div>
+
+                    <input id="input" type="number" class="form-control" placeholder="0.00" step="0.01" aria-label="Gross Pay" autofocus>
+
+                    <div class="input-group-append">
+                        <button class="btn btn-info" type="button" data-toggle="tooltip" data-placement="right" title="Enter your weekly gross pay. This is the larger amount on a paycheck before taxes and deductions are applied.">?</button>
+                    </div>
+                </div>
+
+                <button id="submit" type="button" class="btn btn-primary">Submit</button>
+
+            </div>
+        </div>
+
+        <!-- Area to print results -->
+        <div id="taxes" class="row justify-content-center" hidden>
+
+            <table class="table table-sm table-hover">
+                <tbody>
+                    <tr>
+                        <th scope="row">Weekly Gross Pay</th>
+                        <td id="weekly">$1000</td>
+                    </tr>
+
+                    <tr data-toggle="tooltip" data-placement="top" title="The federal income tax is the tax levied by the Internal Revenue Service (IRS) on the annual earnings of individuals, corporations, trusts, and other legal entities. Federal income taxes are applied to all forms of earnings that make up a taxpayer's taxable income, such as employment earnings or capital gains.">
+                        <th scope="row">Federal Income Tax ℹ️</th>
+                        <td id="federal">$1000</td>
+                    </tr>
+
+                    <tr data-toggle="tooltip" data-placement="top" title="The Federal Insurance Contributions Act (FICA) is a U.S. law that mandates a payroll tax on the paychecks of employees, as well as contributions from employers, to fund the Social Security and Medicare programs. For self-employed persons, there is an equivalent law called the Self-Employed Contributions Act (SECA).">
+                        <th scope="row">FICA ℹ️</th>
+                        <td id="fica">$1000</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="row justify-content-center">
+                <h1 class="alert alert-success" id="netpay">Net Pay: $2500</h1>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Scripts required for bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <!-- Use included jquery.min.js if CDN not available -->
+    <script type="text/javascript">
+        if (typeof jQuery == 'undefined') {
+            document.write(unescape("<script src='jquery.min.js' type='text/javascript'><\/script>"));
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <script>
+        $(function() {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+
+        $(document).ready(function() {
+            const FEDERAL_TAX_RATE = 0.15;
+            const FICA_AMOUNT = 0.075;
+
+            // Calculate when pressing enter
+            $('#input').keypress(function(e) {
+                if (e.keyCode == 13)
+                    $('#submit').click();
+            });
+
+            $("#submit").click(function() {
+                var weeklyPay = parseFloat($("#input").val());
+
+                console.log("Weekly Pay: " + weeklyPay);
+
+                if (isNaN(weeklyPay) || weeklyPay < 0) {
+                    console.log("Input error");
+                }
+                // Convert amount to taxes and display info section
+                else {
+                    // Calculations
+                    let federalTax = FEDERAL_TAX_RATE * weeklyPay;
+                    let ficaAmount = FICA_AMOUNT * weeklyPay;
+                    let netPay = weeklyPay - federalTax - ficaAmount;
+
+                    //Display info section
+                    $('#weekly').html("$" + weeklyPay.toFixed(2));
+                    $('#federal').html("$" + federalTax.toFixed(2));
+                    $('#fica').html("$" + ficaAmount.toFixed(2));
+                    $('#netpay').html("Net Pay: $" + netPay.toFixed(2));
+
+                    $("#taxes").attr("hidden", null);
+
+                }
+            })
+        })
+    </script>
+</body></html>

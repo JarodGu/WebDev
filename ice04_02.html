@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <!-- mobile compatibility -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <title>Homework 2 - F.N.G.</title>
+
+    <!-- Draw crosshair when hovering over targets -->
+    <style>
+        .glyphicon-record {
+            cursor: crosshair
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Page Load and Target Counter Script -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            alert("F.N.G.\nClean up the page by clicking all the targets");
+            var targetCounter = 0
+            $(".glyphicon-record").click(function() {
+                $(this).hide();
+                targetCounter++;
+                $("#score").html("Your Score: " + targetCounter)
+                $("#score").attr("scrollamount", targetCounter);
+                console.log("Target clicked! Score = " + targetCounter);
+
+                // All targets clicked
+                if (targetCounter == 18) {
+                    $("#score").html("CONGRATULATIONS");
+                    $("#score").attr({
+                        scrollamount: 100,
+                        width: "100%"
+                    });
+                }
+            });
+        });
+
+    </script>
+
+    <div class="container">
+
+        <div class="jumbotron">
+            <h1><span class="glyphicon glyphicon-ok"></span> CSS 481 HW2 <span class="glyphicon glyphicon-pencil"></span> </h1>
+        </div>
+        <div class="page-header">
+            <h2>F.N.G. - An Intro to Bootstrap</h2>
+            <h4>By Jarod Guerrero</h4>
+            <img src="https://blog.timesunion.com/amanda/files/2011/09/intern.jpg" class="img-thumbnail img-responsive" alt="Welcome Aboard!">
+            <h3>
+                <marquee id="score" behavior="alternate" width="23%">Ready?</marquee>
+            </h3>
+
+        </div>
+
+        <h3>Overview</h3>
+        <p>Bacon ipsum dolor amet meatloaf boudin bacon, cow <span class="glyphicon glyphicon-record text-danger bg-danger"></span> meatball turducken tail kevin brisket cupim turkey hamburger pork chop kielbasa.<span class="glyphicon glyphicon-record text-danger bg-danger"></span> Sausage andouille beef pork short loin buffalo ground round porchetta jowl venison picanha ham. Short loin turkey pork chop buffalo, shank <span class="glyphicon glyphicon-record text-danger bg-danger"></span> biltong jerky bresaola filet mignon cow pastrami. Rump frankfurter tri-tip shank buffalo jerky pork belly. Chicken pork chop tail, chuck landjaeger <span class="glyphicon glyphicon-record text-danger bg-danger"></span> ribeye turducken andouille ground round. Alcatra brisket tongue swine, bresaola <span class="glyphicon glyphicon-record text-danger bg-danger"></span> chicken hamburger kielbasa short loin shoulder buffalo ball tip jowl <span class="glyphicon glyphicon-record text-danger bg-danger"></span> pancetta.</p>
+
+        <p>Bootstrap has been applied to this <span class="glyphicon glyphicon-record text-danger bg-danger"></span> page.</p>
+
+        <p>You'll notice that the page's appearance isn't from 1998 anymore.</p>
+
+        <p>This is because Bootstrap uses many 'element selectors' to re-style a default
+            HTML page.</p>
+
+        <p>Here's a link to more info about
+            <a href="http://www.w3schools.com/Css/css_selectors.asp">CSS element selectors</a>.&nbsp;
+            Take note of how the link looks now, in it's 'default HTML' format, and then
+            compare that to what it looks like after you've added Bootstrap to the page.</p>
+
+        <h2>Lists: Unordered, Inline, and <span class="glyphicon glyphicon-record text-danger bg-danger"></span> Numbered</h2>
+
+        <p>Here's a list!</p>
+        <ul class="list-inline">
+            <li class="text-danger bg-danger"><span class="glyphicon glyphicon-record"></span></li>
+            <li class="text-warning bg-warning">Item 2 <span class="glyphicon glyphicon-record"></span></li>
+            <li class="text-success bg-success">Item <span class="glyphicon glyphicon-record"></span> 3</li>
+        </ul>
+
+        <p>Here's a numbered list!</p>
+        <ol>
+            <li>Item 1</li>
+            <li>Item 2 <span class="glyphicon glyphicon-record text-warning bg-warning"></span></li>
+            <li><span class="glyphicon glyphicon-record text-danger bg-danger"></span> Item 3</li>
+        </ol>
+
+        <marquee id="finalChallengeBody" behavior="alternate" scrollamount="4">
+            <font size="5">
+                <span class="glyphicon glyphicon-record text-danger bg-danger"></span> <span class="glyphicon glyphicon-record text-danger bg-danger"></span> <span class="glyphicon glyphicon-record text-danger bg-danger"></span> <span class="glyphicon glyphicon-record text-danger bg-danger"></span> <span class="glyphicon glyphicon-record text-danger bg-danger"></span>
+            </font>
+        </marquee>
+    </div>
+</body>
+
+</html>
