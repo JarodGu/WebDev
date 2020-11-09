@@ -1,9 +1,6 @@
 # Web Dev Assignments
 An assortment of web pages with simple functions.
 
-### [Assignment 1 - Income Tax Calculator](https://jarodgu.github.io/WebDev/Assignment%201/Assignment1.html)
-Calculate net pay and taxes with a given gross pay
-
 ### [Homework 1 - The Freshman's Guide to UW Bothell](https://jarodgu.github.io/WebDev/homepage.html)
 A map with points of interest on the UW Bothell Campus
 
@@ -24,3 +21,6 @@ Introduction to checkboxes and converts USD to various currencies via API
 
 ### [Homework 7 - Lists](https://jarodgu.github.io/WebDev/Homework7.html)
 Introduction to lists in Bootstrap. Generates lists of numbers using parameters
+
+### [Homework 8 - Income Tax Calculator](https://jarodgu.github.io/WebDev/Assignment%201/Assignment1.html)
+Calculate net pay and taxes with a given gross pay
